@@ -1,0 +1,12 @@
+# All packages below publish wheels for both x86_64 and aarch64 (Raspberry Pi 5, 64-bit OS).
+numpy>=1.26
+opencv-python-headless>=4.9
+onnxruntime>=1.18          # YOLO dog detection (exported ONNX model)
+ai-edge-litert>=1.0        # YAMNet bark classifier (TFLite)
+fastapi>=0.110
+uvicorn[standard]>=0.29
+jinja2>=3.1
+requests>=2.31             # Telegram Bot API (plain HTTP, no framework)
+python-dotenv>=1.0
+onvif-zeep>=0.2.12         # Pan/tilt over ONVIF (Tapo port 2020)
+pytapo>=3.3                # Fallback pan/tilt via Tapo's local API

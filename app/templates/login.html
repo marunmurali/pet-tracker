@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>pet-tracker</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <main class="login">
+    <h1>pet-tracker</h1>
+    <form method="get" action="/">
+      <label for="token">Dashboard token</label>
+      <input id="token" name="token" type="password" autocomplete="current-password" required autofocus>
+      {% if error %}<p class="error">Wrong token.</p>{% endif %}
+      <button type="submit">Open</button>
+    </form>
+  </main>
+</body>
+</html>

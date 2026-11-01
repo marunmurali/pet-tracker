@@ -1,0 +1,11 @@
+.env
+data/
+models/*.onnx
+models/*.tflite
+models/*.csv
+models/*.pt
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.tmp.mp4

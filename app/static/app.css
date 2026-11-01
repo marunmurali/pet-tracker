@@ -1,0 +1,93 @@
+:root {
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --text: #1b1d22;
+  --muted: #6b7280;
+  --line: #e3e5e9;
+  --accent: #2f7de1;
+  --resting: #4f9d69;
+  --active: #e29a2d;
+  --absent: #c9ccd3;
+  --off: #b9bdc6;
+  --bad: #d64545;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181d;
+    --card: #20232a;
+    --text: #e8e9ec;
+    --muted: #9aa0ab;
+    --line: #2f333c;
+    --absent: #3d424d;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: env(safe-area-inset-top) max(12px, env(safe-area-inset-right)) env(safe-area-inset-bottom)
+    max(12px, env(safe-area-inset-left));
+}
+header, main { max-width: 760px; margin: 0 auto; }
+header { display: flex; align-items: center; justify-content: space-between; padding: 12px 0 8px; }
+h1 { font-size: 22px; margin: 0; }
+h2 { font-size: 16px; margin: 0 0 10px; }
+.muted, .label { color: var(--muted); }
+.label { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+
+.pill { font-size: 12px; padding: 3px 10px; border-radius: 99px; background: var(--line); }
+.pill.ok { background: var(--resting); color: #fff; }
+.pill.warn { background: var(--active); color: #fff; }
+.pill.off { background: var(--off); color: #fff; }
+
+.live img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; border-radius: 12px; display: block; }
+.card { background: var(--card); border-radius: 12px; padding: 14px; margin-top: 12px; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.row h2 { margin: 0; }
+
+.status { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+.state { font-size: 22px; font-weight: 600; text-transform: capitalize; }
+
+.toggles { display: flex; flex-direction: column; gap: 14px; }
+.switch { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.switch input { position: absolute; opacity: 0; }
+.slider { width: 50px; height: 30px; border-radius: 30px; background: var(--off); position: relative; flex: none; transition: background .2s; }
+.slider::after { content: ""; position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; transition: transform .2s; }
+.switch input:checked + .slider { background: var(--resting); }
+.switch input:checked + .slider::after { transform: translateX(20px); }
+.switch input:focus-visible + .slider { outline: 2px solid var(--accent); outline-offset: 2px; }
+.switch input:disabled ~ * { opacity: .5; }
+
+input[type=date] { font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px; }
+
+.timeline { position: relative; height: 34px; background: var(--bg); border-radius: 6px; overflow: hidden; margin-top: 10px; }
+.timeline .seg { position: absolute; top: 0; bottom: 0; }
+.timeline .bark { position: absolute; top: 0; width: 2px; height: 8px; background: var(--bad); }
+.timeline .now { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--text); opacity: .5; }
+.seg.resting { background: var(--resting); }
+.seg.active { background: var(--active); }
+.seg.absent { background: var(--absent); }
+.axis { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; font-size: 13px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; }
+.legend i.resting { background: var(--resting); }
+.legend i.active { background: var(--active); }
+.legend i.absent { background: var(--absent); }
+.legend b { font-weight: 600; margin-left: 3px; }
+
+.barks { list-style: none; margin: 0; padding: 0; }
+.barks li { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-top: 1px solid var(--line); }
+.barks li:first-child { border-top: 0; }
+.barks button, .login button { font: inherit; border: 0; border-radius: 8px; padding: 6px 14px; background: var(--accent); color: #fff; }
+.barks .empty { color: var(--muted); }
+video { width: 100%; margin-top: 10px; border-radius: 10px; background: #000; }
+
+.login { max-width: 340px; margin: 18vh auto 0; }
+.login form { display: flex; flex-direction: column; gap: 10px; }
+.login input { font: inherit; padding: 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--text); }
+.error { color: var(--bad); margin: 0; }

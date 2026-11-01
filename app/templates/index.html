@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#16181d">
+  <title>{{ dog_name }} · pet-tracker</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header>
+    <h1>{{ dog_name }}</h1>
+    <span id="conn" class="pill">…</span>
+  </header>
+
+  <main>
+    <section class="live">
+      <img id="live" src="/stream.mjpg" alt="Live camera view">
+    </section>
+
+    <section class="card status">
+      <div>
+        <div class="label">Now</div>
+        <div id="state" class="state">–</div>
+        <div id="since" class="muted"></div>
+        <div id="follow" class="muted"></div>
+      </div>
+      <div>
+        <div class="label">Barks today</div>
+        <div id="barks-today" class="state">–</div>
+        <div id="training" class="muted"></div>
+      </div>
+    </section>
+
+    <section class="card toggles">
+      <label class="switch">
+        <input type="checkbox" id="enabled">
+        <span class="slider"></span>
+        <span class="text">Watching</span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="tracking">
+        <span class="slider"></span>
+        <span class="text">Follow with pan/tilt</span>
+      </label>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <h2>Timeline</h2>
+        <input type="date" id="day">
+      </div>
+      <div id="timeline" class="timeline" aria-label="Activity timeline"></div>
+      <div class="axis"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+      <div class="legend">
+        <span><i class="resting"></i>Resting <b id="t-resting"></b></span>
+        <span><i class="active"></i>Active <b id="t-active"></b></span>
+        <span><i class="absent"></i>Out of view <b id="t-absent"></b></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Barks</h2>
+      <ul id="bark-list" class="barks"></ul>
+      <video id="player" controls playsinline preload="none" hidden></video>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

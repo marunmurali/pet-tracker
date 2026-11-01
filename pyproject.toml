@@ -1,0 +1,11 @@
+[project]
+name = "pet-tracker"
+version = "0.1.0"
+description = "Watches a dog through a Tapo pan/tilt camera: tracking, activity log, bark alerts on Telegram."
+requires-python = ">=3.11"
+license = "MIT"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning:starlette.*", "ignore:Using `httpx`"]
